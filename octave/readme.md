@@ -2,7 +2,7 @@ To use the Octave (Matlab) script you will need all three ".m" files together in
   
 Edit the script: XmR_Chart_Universal.m  
   
-Change the target filenemt where the data is stored b changing this line: filename = "WheelersTestData.csv";  
+Change the target filename where the data is stored by changing this line (line 18): filename = "WheelersTestData.csv";  
   
 I have included the test data file: "WheelersTestData.csv" to test the script.  
   
