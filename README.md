@@ -3,7 +3,7 @@
 Scripts for making XmR Charts in Octave and Python  (See: Octave and Python folder(s))  
 Also a script that does a general 3 Sigma analysis of a data file. (See: general-statistics-python folder)  
   
-XmR charts Based on the book,  
+XmR chart technique based on the book,  
   
 % "Understanding Variation - The Key To Managing Chaos"  
 % Donald J. Wheeler, 1993, SPC Press, 1993  
