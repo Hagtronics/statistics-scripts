@@ -10,12 +10,12 @@ Sample plots,
 
 Statistical Analysis Of The Data,
 
-![image]()  
+![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/statistics.png)  
   
     
     
 Histogram Of The Data,  
   
-![image]()  
+![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/histogram.png)  
 
 
