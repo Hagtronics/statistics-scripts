@@ -11,12 +11,20 @@ Written for,
 """
 
 import os
-import numpy as np
 import statistics as st
-import matplotlib.pyplot as plt
 import csv
 import tkinter as tk
 from tkinter import filedialog
+import numpy as np
+import matplotlib.pyplot as plt
+
+# ===== User Setup Options ================================================
+
+# Sigma value to use for calculating Upper and Lower Control Limit Lines
+SIGMA_LIMITS = 3.0  # Usually 3.0 Sigma
+
+# Number of Bins for the histogram plot
+HIST_BINS = 15  # With lots of data, 15 bins is enough
 
 
 # ===== Get file name from user dialog ========================================
@@ -30,7 +38,6 @@ file_name = os.path.basename(file_path)
 # ===== Let 'er rip! ==========================================================
 plt.close('all')
 input_data = []
-
 
 
 # Open file for reading, and read data in
@@ -49,13 +56,14 @@ x_bar_l = [x_bar] * N
 
 std_dev = st.stdev(input_data)
 
-ucl = x_bar + (3.0 * std_dev)
+ucl = x_bar + (SIGMA_LIMITS * std_dev)
 ucl_l = [ucl] * N
 
-lcl = x_bar - (3.0 * std_dev)
+lcl = x_bar - (SIGMA_LIMITS * std_dev)
 lcl_l = [lcl] * N
 
-# ===== Trend Line ============================================================
+
+# ===== Calculate Trend Line ===============================================
 x_values = np.linspace(1, N, N)
 input_data_np = np.array(input_data)
 z = np.polyfit(x_values, input_data_np, 1)
@@ -69,11 +77,9 @@ trend_points = p(x_values)
 plt.rcParams['figure.figsize'] = [10, 7]
 
 # Plot Histogram
-hist_bins = 15  # With lots of data, 15 bins is enough
-
 plt.figure()
 plot_title = "Histogram - " + file_name
-plt.hist(input_data, bins=hist_bins)
+plt.hist(input_data, bins=HIST_BINS)
 plt.title(plot_title, fontsize=18, loc='center')
 plt.xlabel("Measured Value", fontsize=14)
 plt.ylabel("Number of Occurrences", fontsize=14)
@@ -83,7 +89,6 @@ plt.grid()
 
 # Plot XmR Chart
 plt.figure()
-
 plot_title = "Statistical Analysis - " + file_name
 plt.plot(input_data)
 plt.plot(x_bar_l, '--')      # Mean = Dashed
