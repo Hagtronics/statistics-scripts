@@ -13,8 +13,8 @@ Written for,
 import os
 import statistics as st
 import csv
+import tkinter.filedialog
 import tkinter as tk
-from tkinter import filedialog
 import numpy as np
 import matplotlib.pyplot as plt
 
