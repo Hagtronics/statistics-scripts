@@ -76,7 +76,7 @@ trend_points = p(x_values)
 # Set plot size for all plots (1000x700 Pixels)
 plt.rcParams['figure.figsize'] = [10, 7]
 
-# Plot Histogram
+# Plot Histogram Chart
 plt.figure()
 plot_title = "Histogram - " + file_name
 plt.hist(input_data, bins=HIST_BINS)
@@ -87,7 +87,7 @@ plt.tight_layout()
 plt.grid()
 
 
-# Plot XmR Chart
+# Plot Statistics Chart
 plt.figure()
 plot_title = "Statistical Analysis - " + file_name
 plt.plot(input_data)
