@@ -1,9 +1,13 @@
 This Python 3.9 program is a full Classical Statistics Analysis program with a interactive GUI.  
   
-When run the program opens a simple interactive GUI.  
+When run the program opens a simple interactive GUI.   
+  
 NOTE: This application requires a minimum of 1920x1080 (FHD) Screen Resolution.  
-
-
+  
+![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/full_screen.png)    
+  
+  
+  
 How to use:  
 
 You fill out the GUI starting at the upper left corner and work down.  
