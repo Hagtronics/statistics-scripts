@@ -1,5 +1,4 @@
-## Heading2
-Full Classical Statistics Analysis program with a interactive GUI 
+##Full Classical Statistics Analysis program with a interactive GUI 
   
 When run the program opens a simple interactive GUI.   
   
