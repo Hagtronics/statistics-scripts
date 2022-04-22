@@ -42,16 +42,16 @@ A sample data file is included with the files - see above for the sample .CSV fi
   
   
   
-Example plots,  
+## Example Output Plots  
 
-Statistical Analysis Of The Data,  
+## Statistical Analysis Of The Data,  
 The first plot shows the: Mean, Trend of the Data and the 3 sigma upper and lower control limits based on the analyzed data.    
   
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/statistics.png)  
   
     
     
-Histogram Of The Data,  
+## Histogram Analysis Of The Data,  
 The second plot is a histogram of the input data.  
    
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/histogram.png)  
