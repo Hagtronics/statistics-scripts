@@ -4,7 +4,7 @@ When run the program opens a simple interactive GUI.
   
 NOTE: This application requires a minimum of 1920x1080 (FHD) Screen Resolution.  
   
-![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/full_screen.png)    
+![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/full_screen.PNG)    
   
   
   
