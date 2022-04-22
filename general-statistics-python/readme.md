@@ -11,7 +11,7 @@ When run the program opens a simple to use interactive GUI.
 
 You fill out the GUI starting at the upper left corner and work down.  
   
-Press the "Import Data File" button and navigate to where your .CSV data file is.  
+Press the "Import Data File" button and navigate to where your .CSV data file is located.  
   
 Once a valid file is read, then the plots will automatically appear, analyzed to the  
 default +/- 3.0 Sigma Limits.  
@@ -19,9 +19,9 @@ default +/- 3.0 Sigma Limits.
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/stat_controls.PNG)  
   
 To change the default Sigma Limits, enter the desired values in the text boxes,  
-then press "Apply New Limits" to regenerate the plot.  
+then press "Apply New Limits" to regenerate the plot (See figure above).  
   
-On the "Statistics Tab" - You can turn on and off all the Analysis Calculations  
+On the "Statistics Plot" Tab, you can turn on and off all the Analysis Calculations  
 that display on the plot.  
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/stat_plot_controls.PNG)  
   
