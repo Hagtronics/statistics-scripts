@@ -1,4 +1,4 @@
-## Full Classical Statistics Analysis program with a interactive GUI 
+## Full Classical Statistics Analysis Python 3.9 program with an interactive GUI 
   
 When run the program opens a simple interactive GUI.   
   
