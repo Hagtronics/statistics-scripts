@@ -1,5 +1,5 @@
 # Full Classical Statistics Analysis Python 3.9 program with an interactive GUI 
-GUI implementd with: PySimpleGUI https://github.com/PySimpleGUI  
+GUI implementd with:   PySimpleGUI    https://github.com/PySimpleGUI  
   
 When run the program opens a simple to use interactive GUI.   
   
