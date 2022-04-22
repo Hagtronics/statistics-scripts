@@ -7,7 +7,8 @@ I have included the test data file: "WheelersTestData.csv" to test the script.
 Output will be two plots.  
 Plot 1 = the XmR chart.  
 Plot 2 = A Histogram of the input data.  
-  
+![Image](https://github.com/Hagtronics/statistics-scripts/blob/main/Figure_1.png)
+    
 Based on the book,  
   
 % "Understanding Variation - The Key To Managing Chaos"  
