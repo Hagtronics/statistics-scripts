@@ -25,9 +25,13 @@ On the "Statistics Plot" Tab, you can turn on and off all the Analysis Calculati
 that display on the plot.  
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/stat_plot_controls.PNG)  
   
+  
+On the Histogram Plot Tab, you can set the number of histogram bins to use in the generation of the histogram.  
+![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/histo_controls.PNG)  
+
 You can also use the standard MatPlotLib controls to zoom in, pan around and save  
 the plot to a file.  
-![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/matplotlib_controls.PNG)  
+![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/matplotlib_controls.png)  
 
 ## How the script works:  
 
