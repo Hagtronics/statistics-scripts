@@ -1,7 +1,7 @@
 # Full Classical Statistics Analysis Python 3.9 program with an interactive GUI 
 GUI implementd with:   PySimpleGUI    https://github.com/PySimpleGUI  
   
-When run the program opens a simple to use interactive GUI.   
+When run, the program opens a simple to use interactive GUI.   
   
 **NOTE: This application requires a minimum of 1920x1080 (FHD) Screen Resolution.**
   
@@ -27,8 +27,11 @@ that display on the plot.
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/stat_plot_controls.PNG)  
   
   
-On the Histogram Plot Tab, you can set the number of histogram bins to use in the generation of the histogram.  
-![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/histo_controls.PNG)  
+On the "Statistics Plot" Tab, you can turn on and off all the Analysis Calculations  
+that display on the plot.   
+You can also set the number of histogram bins to 'Auto' or you can adjust the number of bins used in the generation  
+of the histogram manually.   
+![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/histogram_controls.PNG)  
 
 You can also use the standard MatPlotLib controls to zoom in, pan around and save  
 the plot to a file.  
@@ -47,14 +50,15 @@ A sample data file is included with the files - see above for the sample .CSV fi
 
 ## Statistical Analysis Of The Data,  
 The first plot shows the: Mean, Trend of the Data and the 3 sigma upper and lower control limits based  
-on the analyzed data.    
+on the analyzed data. The various analysis lines on the chart may be toggled one and off (see above).    
   
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/statistics.png)  
   
     
     
 ## Histogram Analysis Of The Data,  
-The second plot is a histogram of the input data.  
+The second plot is a histogram of the input data. Also showing: Mean, and the 3 sigma upper and lower control limits based  
+on the analyzed data. The various analysis lines on the chart may be toggled one and off (see above).    
    
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/histogram.png)  
 
