@@ -1,4 +1,4 @@
-# Full Classical Statistics Analysis Python 3.9 program with an interactive GUI 
+# A Full, Classical Statistics Analysis program in Python 3.9 with an interactive GUI 
 GUI implemented with:   PySimpleGUI    https://github.com/PySimpleGUI  
   
 When run, the program opens a simple to use interactive GUI that does statistical analysis on a CSV file.   
