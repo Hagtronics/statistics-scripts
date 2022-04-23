@@ -34,8 +34,8 @@ of the histogram manually.
    
 You can also use the standard MatPlotLib controls to zoom in, pan around and save  
 the plot to a file.  
-Note: It has been found on Windows 10, that after zooming around, sometimes the 'Home' button fails to reset the graph.  
-If this happens, press the "Apply New Limits" button above to regenerate the graph to the default scaling.
+*Note: It has been found on Windows 10, that after zooming around, sometimes the 'Home' button fails to reset the graph.  
+If this happens, press the "Apply New Limits" button above to regenerate the graph to the default scaling.*
 ![image](https://github.com/Hagtronics/statistics-scripts/blob/main/general-statistics-python/matplotlib_controls.png)  
   
 ## How the script works:  
