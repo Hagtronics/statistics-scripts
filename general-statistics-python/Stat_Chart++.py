@@ -6,7 +6,8 @@ Total freeware, but beware: Written by an infinite number of Monkeys,
 in an infinite amount of time, SO BEWARE as Monkeys have no idea how to type,
 so this is probably full of issues.
 
-Written for,
+Written for and tested with,
+    Win10 21H2
     python 3.9.9
     matplotlib 3.5.1
     PySimpleGUI 4.57.0
@@ -15,7 +16,7 @@ Requires,
     FHD Display - At least 1900 x 1080
     
 Version History:
-    21Apr22 - First Release - Steve Hageman
+    22Apr22 - First Release - Steve Hageman
 """
 
 from pathlib import PurePath
@@ -41,7 +42,12 @@ plot_ucl_flag = True
 plot_lcl_flag = True
 plot_mean_flag = True
 plot_trend_flag = True
-plot_bins_number = 15
+
+plot_hucl_flag = True
+plot_hlcl_flag = True
+plot_hmean_flag = True
+plot_hbins_auto_flag = True
+plot_hbins_number = 15
 
 plot_ucl_sigma = 3
 plot_lcl_sigma = 3
@@ -157,15 +163,12 @@ def plot_statistics():
         N = len(input_data)
 
         x_bar = st.mean(input_data)
-        x_bar_l = [x_bar] * N
 
         std_dev = st.stdev(input_data)
 
         ucl = x_bar + (float(plot_ucl_sigma) * std_dev)
-        ucl_l = [ucl] * N
 
         lcl = x_bar - (float(plot_lcl_sigma) * std_dev)
-        lcl_l = [lcl] * N
 
         # ===== Calculate Trend Line ===============================================
         x_values = np.linspace(1, N, N)
@@ -175,18 +178,18 @@ def plot_statistics():
         trend_points = p(x_values)
 
         ax.plot(input_data)
-
+               
         if plot_ucl_flag is True:
-            ax.plot(ucl_l)
+            ax.hlines(y=ucl, xmin=0, xmax=N, colors='orange', linestyles='solid')
 
         if plot_lcl_flag is True:
-            ax.plot(lcl_l)
-
+            ax.hlines(y=lcl, xmin=0, xmax=N, colors='green', linestyles='solid')
+            
         if plot_mean_flag is True:
-            ax.plot(x_bar_l, "--")  # Mean = Dashed
+            ax.hlines(y=x_bar, xmin=0, xmax=N, colors='red', linestyles='--')
 
         if plot_trend_flag is True:
-            ax.plot(trend_points, ":")  # Trend = Dash Dot
+            ax.plot(trend_points, color='blue', linestyle=":")  # Trend = Dash Dot
 
     plt.title("Statistics Plot - " + file_name, fontsize=18)
     plt.xlabel("Sample", fontsize=14)
@@ -204,7 +207,7 @@ def plot_histogram():
     """Plots the Histogram Graph
     """
     global file_name
-    global plot_bins_number
+    global plot_hbins_number
 
     plt.figure(2)
     plt.figure(2).clear()
@@ -216,9 +219,42 @@ def plot_histogram():
     # error when the mouse hovers over the figure, it's close to canvas size
     fig.set_size_inches(X_SIZE / float(DPI), Y_SIZE / float(DPI))
     ax = plt.subplot(1, 1, 1)
-    # ax.plot(dummy, label='Dummy Data')
-    ax.hist(input_data, bins=plot_bins_number)
 
+    # bins='auto' - Uses the maximum of the Sturges and Freedman-Diaconis bin choice
+    if plot_hbins_auto_flag == True:
+        (n, bins, patches) = ax.hist(input_data, bins='auto')
+    else:
+        (n, bins, patches) = ax.hist(input_data, bins=plot_hbins_number)
+    
+    # print(f"n={n}")         # This is the number of hits in each bin
+    # print(f"bins={bins}")   # This is the center value of each bin
+    # print(f"patches={patches}") # This is an object reference
+    
+    # n[x] is the number in each bin
+    max_vert_scale = np.max(n)
+
+    #ax.vlines(-10, 0, 100)
+    
+    
+    if len(input_data) > 1:
+        # X Bar, UCL & LCL Calculations
+        x_bar = st.mean(input_data)
+
+        std_dev = st.stdev(input_data)
+
+        ucl = x_bar + (float(plot_ucl_sigma) * std_dev)
+
+        lcl = x_bar - (float(plot_lcl_sigma) * std_dev)
+    
+        if plot_hucl_flag is True:
+            ax.vlines(ucl, 0, max_vert_scale, colors='orange')
+    
+        if plot_hlcl_flag is True:
+            ax.vlines(lcl, 0, max_vert_scale, colors='green')
+            
+        if plot_hmean_flag is True:
+            ax.vlines(x_bar, 0, max_vert_scale, colors='red', linestyles='--')
+    
     plt.title("Histogram Plot - " + file_name, fontsize=18)
     plt.xlabel("Measurement", fontsize=14)
     plt.ylabel("Number of Occurrences", fontsize=14)
@@ -294,12 +330,35 @@ tab1_layout = [
 # Histogram Graph Tab
 tab2_layout = [
     [
+        sg.Text("Display Options:", size=(12, 1)),
+        sg.Checkbox(
+            "Upper Control Limit",
+            key="-HUCL-",
+            size=(15, 1),
+            default=True,
+            enable_events=True,
+        ),
+        sg.Checkbox(
+            "Lower Control Limit",
+            key="-HLCL-",
+            size=(15, 1),
+            default=True,
+            enable_events=True,
+        ),
+        sg.Checkbox(
+            "Mean", key="-HMean-", size=(9, 1), default=True, enable_events=True
+        ),
         sg.Text("Histogram Bins: ", size=(12, 1)),
+        sg.Checkbox(
+            "Auto", key="-HBinsAuto-", size=(4, 1), default=True, enable_events=True
+        ),
         sg.Spin(
             [i for i in range(5, 100)],
             initial_value=15,
-            key="-Bins-",
+            key="-HBins-",
+            size=(4, 1),
             enable_events=True,
+            disabled=True
         ),
     ],
     [sg.Canvas(key="controls_cv2")],
@@ -363,11 +422,17 @@ def main():
 
     global file_name
     global input_data
+    
     global plot_ucl_flag
     global plot_lcl_flag
     global plot_mean_flag
     global plot_trend_flag
-    global plot_bins_number
+    global plot_hucl_flag
+    global plot_hlcl_flag
+    global plot_hmean_flag
+    global plot_hbins_auto_flag
+    global plot_hbins_number
+    
     global plot_ucl_sigma
     global plot_lcl_sigma
 
@@ -402,7 +467,7 @@ def main():
                     "The file selected was not a valid CSV data file.", keep_on_top=True
                 )
                 # Reset nearly everything on bad import
-                input_data = []
+                input_data.clear()
                 file_name = ""
                 path_file = ""
                 window["-FilePath-"].update(shorter_path(path_file, 80))
@@ -475,7 +540,7 @@ def main():
             plot_statistics()
             continue
 
-        # Plot Display Options
+        # Statistics Plot Display Options
         if event in ("-UCL-", "-LCL-", "-Mean-", "-Trend-"):
             
             if values["-UCL-"] == False:
@@ -525,8 +590,36 @@ def main():
             plot_statistics()
             continue
 
-        if event in ("-Bins-"):
-            plot_bins_number = values["-Bins-"]
+        if event in ("-HUCL-", "-HLCL-", "-HMean-", "-HBinsAuto-"):
+            
+            if values["-HUCL-"] == False:
+                plot_hucl_flag = False
+            else:
+                plot_hucl_flag = True
+            
+            if values["-HLCL-"] == False:
+                plot_hlcl_flag = False
+            else:
+                plot_hlcl_flag = True
+
+            if values["-HMean-"] == False:
+                plot_hmean_flag = False
+            else:
+                plot_hmean_flag = True
+
+            if values["-HBinsAuto-"] == False:
+                plot_hbins_auto_flag = False
+                window["-HBins-"].update(disabled=False)
+            else:
+                plot_hbins_auto_flag = True
+                window["-HBins-"].update(disabled=True)
+            
+            plot_histogram()
+            continue
+
+        # Will only happen if HBinsAuto is unchecked
+        if event in ("-HBins-"):
+            plot_hbins_number = values["-HBins-"]
             plot_histogram()
             continue
 
