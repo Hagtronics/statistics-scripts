@@ -26,7 +26,7 @@ import tkinter as tk
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
-import PySimpleGUI as sg
+import FreeSimpleGUI as sg
 
 
 # ===== Designer Setup Options ================================================
